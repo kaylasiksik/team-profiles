@@ -2,10 +2,9 @@ const inquirer = require('inquirer');
 const generateHTML = require('./src/page-template')
 const { writeFile, copyFile } = require('./utils/generate-site.js')
 
-const Employee = require('./lib/Intern')
-const Manager = require('./lib/Manager')
-const Engineer = require('./lib/Engineer')
-const Intern = require('./lib/Intern')
+const Manager = require('./lib/manager')
+const Engineer = require('./lib/engineer')
+const Intern = require('./lib/intern')
 
 let globalTeamDetails = {
     Manager: {},
@@ -17,12 +16,12 @@ const employeePromptDetails = (employeeType) => {
     const employeeName = {
         type: 'input',
         name: 'name',
-        message: `Please enter ${employeeType} name`,
+        message: `Please enter ${employeeType}'s name`,
         validate: nameInput => {
             if (nameInput) {
               return true;
             } else {
-              console.log('Please enter manager name');
+              console.log("Please enter employee's name");
               return false;
             }
         }
@@ -30,7 +29,7 @@ const employeePromptDetails = (employeeType) => {
     const employeeId = {
         type: 'input',
         name: 'id',
-        message: `Enter ${employeeType}'s employee ID`,
+        message: `Please enter ${employeeType}'s employee ID`,
         validate: nameInput => {
             if (nameInput) {
               return true;
@@ -43,16 +42,16 @@ const employeePromptDetails = (employeeType) => {
     const employeeEmail = {
         type: 'input',
         name: 'email',
-        message: `Enter ${employeeType}'s email address`,
+        message: `Please enter ${employeeType}'s email address`,
         validate: nameInput => {
             if (nameInput) {
               return true;
             } else {
               console.log(`Enter ${employeeType}'s email address`);
               return false;
-            }
+            };
         }
-      }
+      };
 
     return {employeeName, employeeId, employeeEmail}
 }
@@ -68,12 +67,12 @@ const managerPrompts = () => {
             {
                 type: 'input',
                 name: 'office',
-                message: `Please enter manager's office number`,
+                message: `Please enter the office number of your company's manager.`,
                 validate: nameInput => {
                     if (nameInput) {
                       return true;
                     } else {
-                      console.log('Please enter manager name');
+                      console.log("Please enter the manager's name");
                       return false;
                     }
                 }
@@ -81,7 +80,7 @@ const managerPrompts = () => {
               {
                 type: 'list',
                 name: 'nextEmployee',
-                message: 'Choose to add an Engineer, an Intern, or complete your team',
+                message: 'Would you like to add an Engineer, add an Intern, or complete your team?',
                 choices: ['Engineer', 'Intern', 'My team is complete!']
               }
         ])
@@ -98,12 +97,12 @@ const engineerPrompts = () => {
             {
                 type: 'input',
                 name: 'github',
-                message: `Please enter engineer's github username`,
+                message: `Please enter your engineer's GitHub username`,
                 validate: nameInput => {
                     if (nameInput) {
                       return true;
                     } else {
-                      console.log(`Please enter engineer's github username`);
+                      console.log(`Please enter your engineer's GitHub username.`);
                       return false;
                     }
                 }
@@ -111,7 +110,7 @@ const engineerPrompts = () => {
               {
                 type: 'list',
                 name: 'nextEmployee',
-                message: 'Choose to add an Engineer, an Intern, or complete your team',
+                message: 'Would you like to add an Engineer, add an Intern, or complete your team?',
                 choices: ['Engineer', 'Intern', 'My team is complete!']
               }
         ])
@@ -128,20 +127,20 @@ const internPrompts = () => {
             {
                 type: 'input',
                 name: 'school',
-                message: `Please enter intern's school`,
+                message: `Please enter the name of the school your intern is affiliated with.`,
                 validate: nameInput => {
                     if (nameInput) {
                       return true;
                     } else {
-                      console.log(`Please enter intern's school`);
+                      console.log(`Please enter the name of your intern's school`);
                       return false;
-                    }
+                    };
                 }
               },
               {
                 type: 'list',
                 name: 'nextEmployee',
-                message: 'Choose to add an Engineer, an Intern, or complete your team',
+                message: 'Would you like to add an Engineer, add an Intern, or complete your team?',
                 choices: ['Engineer', 'Intern', 'My team is complete!']
               }
         ])
@@ -178,11 +177,11 @@ const updateGlobalData = (employeeType, employee) => {
 const recursiveFunction = (employeeType) => {
     userPrompt(employeeType).then(results => {
         updateGlobalData(employeeType, results);
-        console.log(`${results.name} has been added as a ${employeeType}`);
-        if (results.nextEmployee !== 'My team is complete!') {
+        console.log(`${results.name} has been added as a(n) ${employeeType}`);
+        if (results.nextEmployee !== 'Team complete.') {
             recursiveFunction(results.nextEmployee)
         } else {
-            console.log('Your team is complete! Please find your team portfolio in dist/index.html');
+            console.log('Your team is complete. You can find your team portfolio at dist/index.html');
             const myHTML = generateHTML(globalTeamDetails);
             writeFile(myHTML).then(copyFile())
 
