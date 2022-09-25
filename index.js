@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-const generateHTML = require('./src/template')
-const { writeFile, copyFile } = require('./utils/generate.js')
+const generateHTML = require('./src/template.js')
+const { writeFile, copyFile } = require('./src/generate.js')
 
 const Manager = require('./lib/manager')
 const Engineer = require('./lib/engineer')
@@ -179,8 +179,8 @@ const recursiveFunction = (employeeType) => {
     userPrompt(employeeType).then(results => {
         updateGlobalData(employeeType, results);
         console.log(`${results.name} has been added as a(n) ${employeeType}`);
-        if (results.nextEmployee !== 'Team complete.') {
-            recursiveFunction(results.nextEmployee)
+        if (results.nextEmployee !== 'Team complete!') {
+            recursiveFunction(results.nextEmployee);
         } else {
             console.log('Your team is complete. You can find your team portfolio at dist/index.html');
             const myHTML = generateHTML(globalTeamDetails);

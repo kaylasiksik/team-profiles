@@ -5,7 +5,7 @@
       "inquirer": "^8.2.4",
       "jest": "^28.1.2"
     },
-    "name": "team-portfolio",
+    "name": "team-profiles",
     "description": "",
     "version": "1.0.0",
     "main": "index.js",

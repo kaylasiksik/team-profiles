@@ -8,8 +8,8 @@ ul {
 }
 
 nav {
-    background-color: rgb(80, 96, 48);
-    color: antiquewhite;
+    background-color: rgb(58, 105, 69);
+    color: white;
 }
 
 .employee-card {
@@ -18,6 +18,6 @@ nav {
 }
 
 .employee-header {
-    background-color: rgb(91, 206, 204);
-    color: antiquewhite;
+    background-color: rgb(120, 160, 141);
+    color: white;
 }
