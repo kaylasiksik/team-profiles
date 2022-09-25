@@ -11,17 +11,21 @@ const writeFile = fileContent => {
         }
   
         // no errors -> resolve Promise and send successful data to `.then()`.
-        resolve({
-          ok: true,
-          message: 'File created:)'
-        });
+        else { 
+          resolve({
+            ok: true,
+            message: 'File created:)' 
+          });
+            return;
+        };
+
       });
     });
   };
 
   const copyFile = fileContent => {
     return new Promise((resolve, reject) => {
-      fs.copyFile('./src/style.css', './dist/style.css', err => {
+      fs.copyFile('./src/style.css', './dist/assets/style.css', err => {
         // error occurs -> reject Promise and send error(s) to Promise's `.catch()` method
         if (err) {
           reject(err);
@@ -30,12 +34,17 @@ const writeFile = fileContent => {
         }
   
         // no errors -> resolve Promise and send successful data to `.then()` method
-        resolve({
-          ok: true,
-          message: 'File copied:)'
-        });
+        else { 
+          resolve({
+            ok: true,
+            message: 'File copied:)' 
+          });
+            return;
+        };
+
       });
     });
   };
+
 
   module.exports = { writeFile, copyFile }

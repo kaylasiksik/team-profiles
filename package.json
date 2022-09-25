@@ -1,29 +1,27 @@
-
-
 {
     "dependencies": {
-      "inquirer": "^8.2.4",
-      "jest": "^28.1.2"
+        "inquirer": "^8.2.4",
+        "inquirer-test": "^2.0.1",
+        "jest": "^28.1.3"
     },
     "name": "team-profiles",
     "description": "",
     "version": "1.0.0",
     "main": "index.js",
     "directories": {
-      "lib": "lib"
+        "lib": "lib"
     },
-    "devDependencies": {},
     "scripts": {
-      "test": "jest"
+        "test": "jest"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/kaylasiksik/team-profiles.git"
+        "type": "git",
+        "url": "git+https://github.com/kaylasiksik/team-profiles.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-      "url": "https://github.com/kaylasiksik/team-profiles/issues"
+        "url": "https://github.com/kaylasiksik/team-profiles/issues"
     },
     "homepage": "https://github.com/kaylasiksik/team-profiles#readme"
-  }
+}
