@@ -9,9 +9,9 @@
   # Description
   The goal of this project was to create a profile for a given manager's team. The team can consist of any number of interns or engineers, but there can only be one manager. 
   # Installation
-  inquirer, node
+  inquirer, jest, node
   # Usage
-  In order to use this app npm, node, inquirer
+  In order to use this app npm, node, inquirer, jest
   
 
   # Tests
