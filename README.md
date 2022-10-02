@@ -11,11 +11,13 @@
   # Installation
   inquirer, jest, node
   # Usage
-  In order to use this app npm, node, inquirer, jest
+  In order to use this app, you'll need npm, node, inquirer, jest.
+  To begin creating a team profile, run node index.js.
   
 
   # Tests
-  use test
+  use test: 
+ [team-profiles-recording.mov.zip](https://github.com/kaylasiksik/team-profiles/files/9693571/team-profiles-recording.mov.zip)
 
 
   # Questions
